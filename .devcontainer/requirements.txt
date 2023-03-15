@@ -1,0 +1,14 @@
+matplotlib
+jupyter
+ipykernel
+numpy
+pandas
+scipy
+tqdm
+flake8
+black
+selenium
+Sphinx
+recommonmark
+sphinx_rtd_theme
+chromedriver-binary==111.0.5563.64.0

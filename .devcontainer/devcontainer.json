@@ -1,0 +1,12 @@
+{
+    "name": "atcoder_offline",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "python",
+    "workspaceFolder": "/work",
+    "extensions": [
+        "ms-python.python",
+    ],
+    "settings": {
+        "editor.tabSize": 4,
+    }
+}

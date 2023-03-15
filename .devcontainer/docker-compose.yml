@@ -1,0 +1,17 @@
+version: '3.2'
+
+services:
+  python:
+    # イメージ名を指定
+    image: atcoder_offline:1.0
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: atcoder_offline
+    stdin_open: true
+    tty: true
+    working_dir: '/work'
+    volumes:
+      - ../:/work
