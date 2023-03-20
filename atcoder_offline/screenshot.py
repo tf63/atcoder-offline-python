@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
 
-def save_screenshot(url):
+def save_screenshot(url, filename):
     options = ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
@@ -19,10 +19,10 @@ def save_screenshot(url):
     # driver = webdriver.Chrome(options=options)
 
     # File Name
-    FILENAME = "/work/out/img/screen.png"
+    FILENAME = f"/work/out/img/{filename}"
     print(FILENAME)
+
     # set driver and url
-    url = "https://trend-tracer.com/"
     driver.get(url)
 
     # get width and height of the page

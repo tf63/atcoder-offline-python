@@ -1,13 +1,13 @@
 import json
 
 
-def get_folder_id():
-    d = {}
+def get_env():
+    data = {}
     with open("config/env.json", mode="r") as f:
-        d = json.load(f)
+        data = json.load(f)
 
-    return d["FOLDER_ID"]
+    return data
 
 
-def get_color_to_tag():
-    pass
+def get_notion_token():
+    return get_env()["TOKEN_NOTION"]
