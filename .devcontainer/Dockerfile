@@ -33,11 +33,6 @@ RUN apt update && \
     tzdata \
     tree 
 
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    apt-get install -y ./google-chrome-stable_current_amd64.deb &&\
-    rm google-chrome-stable_current_amd64.deb
-
 RUN apt-get -y install fonts-ipafont-gothic
 
 # ユーザー名を指定

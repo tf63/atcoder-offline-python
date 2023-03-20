@@ -1,5 +1,9 @@
 # my
+.DS_Store
 out/
+env.json
+my_client_secrets.json
+saved_credentials.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -125,7 +129,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-env.json
 env/
 venv/
 ENV/
