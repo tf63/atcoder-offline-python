@@ -1,46 +1,71 @@
 import requests
-import json
-import atcoder_offline.api as api
+from atcoder_offline.api import API
 
 
 def notion_post(problem_name, color):
-    env = api.get_env()
-    url = f'{env["API_NOTION"]}/pages'
+    """
+    Notionのデータベースにproblem_name, colorをもつデータを追加する
+    (colorはこの関数内で求めるべき?)
 
+    Args:
+        problem_name: abc293_a
+        color: 灰
+    Returns: (None)
+    """
+
+    # request先
+    url = f"{API.get_url_notion()}/pages"
+
+    # ヘッダ
     headers = {
         "Accept": "application/json",
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + env["TOKEN_NOTION"],
+        "Authorization": "Bearer " + API.get_notion_token(),
     }
 
+    # 中身
     payload = {
-        "parent": {"database_id": env["DATABASE_ID"]},
+        "parent": {"database_id": API.get_notion_database_id()},
         "properties": {
             "contest": {
                 "type": "title",
                 "title": [{"type": "text", "text": {"content": problem_name}}],
             },
-            "color": {"select": {"name": color, "color": env["COLOR_TO_TAG"][color]}},
+            "color": {
+                "select": {"name": color, "color": API.get_tag_from_color(color)}
+            },
             "status": {"select": {"name": "Not started", "color": "gray"}},
         },
     }
 
+    # 送信
     requests.post(url, json=payload, headers=headers)
 
 
-def notion_get(problem_name):
-    env = api.get_env()
-    url = f'{env["API_NOTION"]}/databases/{env["DATABASE_ID"]}/query'
+def notion_get():
+    """
+    Notionのデータベースを取得する
+    (動作テスト用)
 
+    Args: (None)
+    Returns: データベース (json)
+    """
+
+    # リクエスト先
+    url = f"{API.get_url_notion()}/databases/{API.get_notion_database_id()}/query"
+
+    # ヘッダ
     headers = {
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + env["TOKEN_NOTION"],
+        "Authorization": "Bearer " + API.get_notion_token(),
     }
 
+    # レスポンス
     response = requests.get(url, headers=headers)
 
+    # 結果
     result_dict = response.json()
     result = result_dict["results"]
 
@@ -49,26 +74,35 @@ def notion_get(problem_name):
 
 def notion_exist_data(problem_name):
     """
-    DBにproblem_nameが
-    存在する: true,
-    存在しない: false
+    問題がNotionのデータベースに存在するかどうかを返す
+
+    Args: abc293_a
+    Returns: DBにproblem_nameが
+                存在する: true,
+                存在しない: false
     """
 
-    env = api.get_env()
-    url = f'{env["API_NOTION"]}/databases/{env["DATABASE_ID"]}/query'
+    # リクエスト先
+    url = f"{API.get_url_notion()}/databases/{API.get_notion_database_id()}/query"
 
+    # ヘッダ
     headers = {
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + env["TOKEN_NOTION"],
+        "Authorization": "Bearer " + API.get_notion_token(),
     }
 
+    # titleがproblem_nameのデータを取得する
     payload = {"filter": {"property": "contest", "title": {"equals": problem_name}}}
+
+    # レスポンス
     response = requests.post(url, json=payload, headers=headers)
 
+    # 結果
     result_dict = response.json()
     result = result_dict["results"]
-    print(result_dict, len(result))
+
+    # resultが空かどうかを返す
     for res in result:
         print(res)
     if len(result) > 0:

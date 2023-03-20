@@ -6,5 +6,11 @@ def test_get_difficulty():
     print(diff)
 
 
+def test_get_url_from_explain():
+    url = atcoder.get_url_from_explain("abc293", "abc293_a")
+    print(url)
+
+
 if __name__ == "__main__":
     test_get_difficulty()
+    test_get_url_from_explain()

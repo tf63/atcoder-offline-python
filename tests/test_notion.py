@@ -2,7 +2,7 @@ from atcoder_offline import notion
 
 
 def test_notion_post():
-    notion.notion_post("abc290_a", "灰")
+    notion.notion_post("abc212_a", "灰")
 
 
 def test_notion_exist_data():

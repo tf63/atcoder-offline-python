@@ -1,9 +1,7 @@
 {
     // ---------- Python ----------
     "[python]": {
-        "editor.formatOnPaste": true,
         "editor.formatOnSave": true,
-        "editor.formatOnType": true,
     },
     // Lint機能を有効にするかどうか
     "python.linting.enabled": true,
