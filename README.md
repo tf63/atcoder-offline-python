@@ -2,15 +2,31 @@
 **概要**
 - オフラインでAtCoderの問題・解説ページを見れる環境を作る
 
+![](docs/img/summary.png)
+
 **何をするか**
 
 - 指定したコンテストの問題・解説ページのスクリーンショットを撮影し，Googleドライブに保存する
 
 - [AtCoder Problem](https://kenkoooo.com/atcoder/#/table/)の[Information API](https://kenkoooo.com/atcoder/resources/problem-models.json)から各問題のDifficultyを取得し，Difficultyごとに保存
 
+![](docs/img/drive_summary.png)
+
 - Notionのデータベースにノートを用意する
 
-![](docs/img/summary.png)
+![](docs/img/notion_db_summary.png)
+---
+
+## 実行方法
+- 実行コマンド
+
+    - abc280からabc284までのA, B, C問題がダウンロードされる
+```
+python -m atcoder_offline --prefix abc --begin 280 --end 284 --problem a b c
+```
+- `--clear_done`オプションをつけることで，NotionのデータベースでDoneとした問題をGoogleドライブから削除できる
+
+---
 
 ## 各種設定
 
@@ -23,6 +39,8 @@
 
     - intelチップの場合，`image:selenium/standalone-chromium`
     - M1/M2チップ搭載のmacの場合，`image:seleniarm/standalone-chromium`
+
+---
 
 ## Goodleドライブ APIの有効化
 - Google Drive APIを有効にし，PyDrive2からGoogleドライブを操作できるようにする
@@ -44,6 +62,7 @@
 ```
 https://drive.google.com/drive/folders/<フォルダID>
 ```
+---
 
 ## Notion APIの有効化
 - https://www.notion.so/my-integrations からインテグレーションを作成し，トークンを取得
@@ -66,23 +85,12 @@ https://drive.google.com/drive/folders/<フォルダID>
 
 <img src="docs/img/integration.png" width="50%">
 
+---
 ## 結果
-
+    
 **実行結果**
 
-<img src="docs/img/result.png" width="75%">
-
-**Googleドライブ**
-
-![](docs/img/result_drive.png)
-
-**Notion**
-
-![](docs/img/result_notion.png)
-
-**確認済み問題の削除**
-
-<img src="docs/img/result_clear.png" width="75%">
+<img src="docs/img/result.png" width="100%">
 
 
 **statusの更新**
@@ -90,6 +98,7 @@ https://drive.google.com/drive/folders/<フォルダID>
 <img src="docs/img/result_db_bef.png" width="50%">
 <img src="docs/img/result_db_after.png" width="50%">
 
+---
 
 ## 参考
 macの場合，ベースイメージをseleniumではなくseleniarmを使う (docker-compose)
