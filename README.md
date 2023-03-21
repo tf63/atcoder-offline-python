@@ -6,13 +6,17 @@
 
 - 指定したコンテストの問題・解説ページのスクリーンショットを撮影し，Googleドライブに保存する
 
-- AtCoder ProblemのInformation APIから各問題のDifficultyを取得し，Difficultyごとに保存する
+- [AtCoder Problem](https://kenkoooo.com/atcoder/#/table/)の[Information API](https://kenkoooo.com/atcoder/resources/problem-models.json)から各問題のDifficultyを取得し，Difficultyごとに保存
 
 - Notionのデータベースにノートを用意する
 
 ![](docs/img/summary.png)
 
 ## 各種設定
+
+## .env
+- **必ず`.env.example.json`を`.env`にリネームする**
+- .envファイルにはAPIトークンを保管するため，絶対にgit管理しない
 
 ## docker
 - docker-compose内の`selenium`コンテナのイメージを次のように変更する
