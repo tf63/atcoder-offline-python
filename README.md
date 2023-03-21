@@ -64,13 +64,13 @@ https://drive.google.com/drive/folders/<フォルダID>
 **インテグレーションの接続**
 - コネクトの追加から，作成したインテグレーションを追加する
 
-![](docs/img/integration.png)
+<img src="docs/img/integration.png" width="50%">
 
 ## 結果
 
 **実行結果**
 
-![](docs/img/result.png)
+<img src="docs/img/result.png" width="75%">
 
 **Googleドライブ**
 
@@ -79,6 +79,17 @@ https://drive.google.com/drive/folders/<フォルダID>
 **Notion**
 
 ![](docs/img/result_notion.png)
+
+**確認済み問題の削除**
+
+<img src="docs/img/result_clear.png" width="75%">
+
+
+**statusの更新**
+
+<img src="docs/img/result_db_bef.png" width="50%">
+<img src="docs/img/result_db_after.png" width="50%">
+
 
 ## 参考
 macの場合，ベースイメージをseleniumではなくseleniarmを使う (docker-compose)

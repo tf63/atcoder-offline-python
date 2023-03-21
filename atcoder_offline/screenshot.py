@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
@@ -28,6 +30,7 @@ def save_screenshot(url, filename):
     driver.implicitly_wait(5)
 
     # File Name
+    os.makedirs("out/img", exist_ok=True)
     FILENAME = f"/work/out/img/{filename}"
     print(f"Save screenshot {FILENAME} ...")
 

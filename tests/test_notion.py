@@ -10,6 +10,16 @@ def test_notion_exist_data():
     assert notion.notion_exist_data("afa") is False
 
 
+def test_notion_get_from_status():
+    notion.notion_get_from_status()
+
+
+def test_notion_update_status():
+    notion.notion_update_status()
+
+
 if __name__ == "__main__":
-    test_notion_post()
-    test_notion_exist_data()
+    # test_notion_post()
+    # test_notion_exist_data()
+    # test_notion_get_from_status()
+    test_notion_update_status()

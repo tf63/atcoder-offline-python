@@ -7,7 +7,8 @@ from atcoder_offline.api import API
 
 
 def main():
-    save_contest_page("abc289", ["a"])
+    # save_contest_page("abc289", ["c"])
+    clear_screenshot()
     pass
 
 
@@ -20,6 +21,7 @@ def save_contest_page(contest_name, problem_idf):
     Args:
         contest_name: abc293
         problem_idf: ["a", "b", "c"]
+    Returns: (None)
     """
 
     # AtCoder problemからdifficultyを取得
@@ -73,6 +75,29 @@ def save_contest_page(contest_name, problem_idf):
         notion.notion_post(problem_name, color)
 
         print("===============================================")
+
+
+def clear_screenshot():
+    """
+    NotionのデータベースでstatusをDoneとしたデータについて，
+    Googleドライブからスクショを削除し，
+    statusをCompleteに置き換える
+
+    Args: (None)
+    Returns: (None)
+    """
+
+    # statusがDoneのデータを取得
+    problem_names, colors = notion.notion_get_from_status("Done")
+
+    if len(problem_names) == 0:
+        return
+
+    # Googleドライブからファイルを削除
+    drive.delete_problem_file(problem_names, colors)
+
+    # NotionのstatusをDone -> Complete
+    notion.notion_update_status()
 
 
 if __name__ == "__main__":
