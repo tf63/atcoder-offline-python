@@ -7,7 +7,7 @@ from atcoder_offline.api import API
 
 
 def main():
-    save_contest_page("abc293", ["a", "b", "c"])
+    save_contest_page("abc289", ["a"])
     pass
 
 
@@ -44,27 +44,30 @@ def save_contest_page(contest_name, problem_idf):
 
         # 問題ページの撮影
         url = f"https://atcoder.jp/contests/{contest_name}/tasks/{problem_name}?lang=ja"
+        print(f"URL: {url}")
+
         filename = f"{problem_name}_problem.png"
         screenshot.save_screenshot(url, filename)
 
         # google driveへ保存
         drive.save_file_to_drive(filename, folder_id)
 
-        print(f"save screenshot: {filename}")
-        print(f"url: {url}")
-        time.sleep(10)
+        print("Complete! wait 5 seconds...")
+        print("")
+        time.sleep(5)
 
         # 解説ページの撮影
         url = atcoder.get_url_from_explain(contest_name, problem_name)
+        print(f"URL: {url}")
+
         filename = f"{problem_name}_explain.png"
         screenshot.save_screenshot(url, filename)
 
         # google driveへ保存
         drive.save_file_to_drive(filename, folder_id)
 
-        print(f"save screenshot: {filename}")
-        print(f"url: {url}")
-        time.sleep(10)
+        print("Complete! wait 5 seconds...")
+        time.sleep(5)
 
         # notion APIでデータを挿入
         notion.notion_post(problem_name, color)

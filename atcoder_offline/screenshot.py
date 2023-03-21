@@ -29,7 +29,7 @@ def save_screenshot(url, filename):
 
     # File Name
     FILENAME = f"/work/out/img/{filename}"
-    print(FILENAME)
+    print(f"Save screenshot {FILENAME} ...")
 
     # set driver and url
     driver.get(url)
@@ -37,7 +37,7 @@ def save_screenshot(url, filename):
     # get width and height of the page
     w = driver.execute_script("return document.body.scrollWidth;")
     h = driver.execute_script("return document.body.scrollHeight;")
-    print(w, h)
+    print(f"Image size: ({w}, {h})")
     # set window size
     driver.set_window_size(w, h)
 
