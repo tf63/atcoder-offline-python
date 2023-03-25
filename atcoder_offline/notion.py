@@ -77,8 +77,6 @@ def notion_exist_data(problem_name):
     result = result_dict["results"]
 
     # resultが空かどうかを返す
-    for res in result:
-        print(res)
     if len(result) > 0:
         return True
     else:

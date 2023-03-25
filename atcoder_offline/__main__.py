@@ -12,7 +12,8 @@ def main(params):
     print(f"params: {params}\n")
 
     # 用意する問題
-    problem_idf = ["a", "b", "c", "d", "e"]
+    # problem_idf = ["a", "b", "c", "d", "e"]
+    problem_idf = params.problem
 
     contest_names = [f"{params.prefix}{i}" for i in range(params.begin, params.end + 1)]
 
@@ -66,12 +67,15 @@ def save_contest_page(contest_name, problem_idf):
     for idf in problem_idf:
         # 問題名の取得
         problem_name = f"{contest_name}_{idf}"
-        print(f"problem_name: {problem_name}")
-        print("-----------------------------------------------")
 
         # notionにproblem_nameが存在したらスキップ
         if notion.notion_exist_data(problem_name):
+            print(f"problem exists, skip {problem_name}")
+            print("===============================================")
             continue
+
+        print(f"problem_name: {problem_name}")
+        print("-----------------------------------------------")
 
         # 問題の色を取得
         color = difficulties[problem_name]
